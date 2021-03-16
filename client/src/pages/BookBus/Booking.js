@@ -33,7 +33,18 @@ export default function ControlledAccordions() {
 
   const submitValue=(data)=>{
       console.log("data -->",data);
-  }
+      fetch('http://localhost:5000/postData', {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => console.log("message",data));
+        }
+
+  
 
   return (
     <div className={classes.root}>

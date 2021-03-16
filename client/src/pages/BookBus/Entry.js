@@ -69,8 +69,8 @@ const clearData=()=>{
 }
 const submitData=()=>{
   const data={
-    "routeno": route,
-    "username":userName,
+    "route": route,
+    "name":userName,
     "date":selectedDate,
     "starttime":startTime,
     "endtime":endTime

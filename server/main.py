@@ -24,9 +24,10 @@ if os.path.exists("mongoip.txt"):
     with open("mongoip.txt","r") as f:
         ip=f.read()
         # print(ip)
-if os.environ.get("mongoip",None)!=None:
+if os.getenv("mongoip")!=None:
     ip=os.environ.get("mongoip",None)
     print("env")
+print(os.getenv("mongoip"))
 mongo_client = MongoClient(ip)
 
 app = Flask(__name__)

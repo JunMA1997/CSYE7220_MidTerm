@@ -63,9 +63,9 @@ export default function CustomizedTables({data}) {
           {data.map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
-                {row.name}
+                {row.username}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.route}</StyledTableCell>
+              <StyledTableCell align="right">{row.routeno}</StyledTableCell>
               <StyledTableCell align="right">{row.date}</StyledTableCell>
               <StyledTableCell align="right">{row.starttime}</StyledTableCell>
               <StyledTableCell align="right">{row.endtime}</StyledTableCell>

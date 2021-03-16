@@ -5,20 +5,20 @@ import  datapoints   from "../../dataValues/datapoints";
 //import axios from 'axios';
 
 const Buses = () => {
-  const [busList, setTweets] = React.useState(datapoints);
-  const [loading, setLoading] = React.useState(false);   
+  const [busList, setTweets] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);   
   
-  // useEffect(() => {
-  //   const fetchData = async () => {
-	//   const res = await fetch("http://0.0.0.0:5000/tweets-results");
-  //     const { results } = await res.json();
-  //     console.log(results);
-  //     setTweets([...results]);
-	//   setLoading(false);
-  //   };
+  useEffect(() => {
+    const fetchData = async () => {
+	  const res = await fetch("http://localhost:5000/getData");
+      const results  = await res.json();
+      console.log(results);
+      setTweets(results);
+	  setLoading(false);
+    };
  
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
   return (
     <ScrollView noSpacer={true} noScroll={true} style={styles.container}>

@@ -1,0 +1,9 @@
+flask
+flask_cors
+flask_api
+datetime
+pytz
+uuid
+bson
+pymongo
+dnspython

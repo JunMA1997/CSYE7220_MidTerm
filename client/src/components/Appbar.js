@@ -231,7 +231,7 @@ export default function Dashboard() {
                 <DashboardIcon />
               </ListItemIcon>
               <ListItemText primary="Booking Details" />
-              { title === 'Tweets' && 
+              { title === 'Booking Details' && 
                 <ListItemIcon>
                   <IconButton onClick={handleDrawerCollapsed}>
                     <ChevronLeftIcon />
@@ -241,12 +241,12 @@ export default function Dashboard() {
             </ListItem>
 
             {/* Compose menu item*/}
-            <ListItem button component={Link} to="/compose" onClick={onItemClick('Compose')}>
+            <ListItem button component={Link} to="/booking" onClick={onItemClick('Book A Bus')}>
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
-              <ListItemText primary="Compose" />
-              { title === 'Compose' && 
+              <ListItemText primary="Book A Bus" />
+              { title === 'Book A Bus' && 
                 <ListItemIcon>
                   <IconButton onClick={handleDrawerCollapsed}>
                     <ChevronLeftIcon />
@@ -278,7 +278,7 @@ export default function Dashboard() {
           {/* menu paths */}
           <Route exact path="/" component={Home} />
           <Route path="/details" component={Buses} />
-          <Route path="/compose" component={Booking} />
+          <Route path="/booking" component={Booking} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/password_reset" component={PasswordReset} />

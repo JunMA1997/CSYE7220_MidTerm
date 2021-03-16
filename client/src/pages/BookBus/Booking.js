@@ -31,6 +31,10 @@ export default function ControlledAccordions() {
     setExpanded(isExpanded ? panel : false);
   };
 
+  const submitValue=(data)=>{
+      console.log("data -->",data);
+  }
+
   return (
     <div className={classes.root}>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
@@ -39,12 +43,12 @@ export default function ControlledAccordions() {
           aria-controls="panel1bh-content"
           id="panel1bh-header"
         >
-          <Typography className={classes.heading}>Silver Line</Typography>
+          <Typography className={classes.heading}>Silver Line    <b>423</b></Typography>
           <Typography className={classes.secondaryHeading}>Terminal A --- South Station </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            <Entry/>
+            <Entry submitValue={submitValue} route={423}/>
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -54,15 +58,14 @@ export default function ControlledAccordions() {
           aria-controls="panel2bh-content"
           id="panel2bh-header"
         >
-          <Typography className={classes.heading}>Cross Town</Typography>
+          <Typography className={classes.heading}>Cross Town     <b>327</b></Typography>
           <Typography className={classes.secondaryHeading}>
             Harward Square --- Nubian Station
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar
-            diam eros in elit. Pellentesque convallis laoreet laoreet.
+          <Entry submitValue={submitValue} route={327}/>
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -72,15 +75,14 @@ export default function ControlledAccordions() {
           aria-controls="panel3bh-content"
           id="panel3bh-header"
         >
-          <Typography className={classes.heading}> Qupark</Typography>
+          <Typography className={classes.heading}> Qupark    <b>596</b></Typography>
           <Typography className={classes.secondaryHeading}>
           Newburyport --- Rockport
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-            vitae egestas augue. Duis vel est augue.
+          <Entry submitValue={submitValue} route={596}/>
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -90,15 +92,14 @@ export default function ControlledAccordions() {
           aria-controls="panel4bh-content"
           id="panel4bh-header"
         >
-          <Typography className={classes.heading}>Sprint Line</Typography>
+          <Typography className={classes.heading}>Sprint Line     <b>321</b></Typography>
           <Typography className={classes.secondaryHeading}>
           Northeaster University --- Black Bay
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
-            vitae egestas augue. Duis vel est augue.
+          <Entry submitValue={submitValue} route={321}/>
           </Typography>
         </AccordionDetails>
       </Accordion>

@@ -32,24 +32,11 @@ export default function CenteredGrid() {
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <Paper className={classes.paper}>
-          <TextField id="standard-basic" label="Standard" />
+          <TextField id="standard-basic" label="Rider Name" />
           </Paper>
         </Grid>
         <Grid item xs={8}>
           <Paper className={classes.paper}>
-          <KeyboardDatePicker
-          disableToolbar
-          variant="inline"
-          format="MM/dd/yyyy"
-          margin="normal"
-          id="date-picker-inline"
-          label="Date picker inline"
-          value={selectedDate}
-          onChange={handleDateChange}
-          KeyboardButtonProps={{
-            'aria-label': 'change date',
-          }}
-        />
           </Paper>
         </Grid>
         <Grid item xs={8}>

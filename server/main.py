@@ -19,7 +19,15 @@ from bson.objectid import ObjectId
 import re
 # straight mongo access
 from pymongo import MongoClient
-mongo_client = MongoClient("mongodb+srv://CSYE7220_MIDTERM:CSYE7220_MIDTERM@cluster0.lxsro.mongodb.net/Uber?retryWrites=true&w=majority")
+ip="123"
+if os.path.exists("mongoip.txt"):
+    with open("mongoip.txt","r") as f:
+        ip=f.read()
+        # print(ip)
+if os.environ.get("mongoip",None)!=None:
+    ip=os.environ.get("mongoip",None)
+    print("env")
+mongo_client = MongoClient(ip)
 
 app = Flask(__name__)
 CORS(app)

@@ -23,7 +23,7 @@ mongo_client = MongoClient("mongodb+srv://CSYE7220_MIDTERM:CSYE7220_MIDTERM@clus
 
 app = Flask(__name__)
 CORS(app)
-records=dict()
+records=list()
 # database access layer
 ## insert one record
 def insert_one(r):
@@ -44,7 +44,8 @@ def add_record():
     starttime = request.json['starttime']
     endtime = request.json['endtime']
     record = dict(routeno=routeno,username=username,date=date,starttime=starttime,endtime=endtime,_id=str(ObjectId()))
-    records[record['_id']]=record
+    records.append(record)
+    # int i=len(record)
     insert_one(record)
     return jsonify(record)
 
@@ -60,7 +61,7 @@ def add_many():
         starttime = r['starttime']
         endtime = r['endtime']
         record = dict(routeno=routeno,username=username,date=date,starttime=starttime,endtime=endtime,_id=str(ObjectId()))
-        records[record['_id']]=record
+        records.append(record)
         insert_one(record)
     return "success"
 ###################
@@ -75,14 +76,14 @@ def applyCollectionLevelUpdates():
         mongo_collection = db['Uber']
 
         cursor = mongo_collection.find({})
-        recordsinDB = list(cursor)
+        records = list(cursor)
 
-        howmany = len(recordsinDB)
-        sorted_records = sorted(recordsinDB)
+        howmany = len(records)
+        
         #return json.dumps({"results": sorted_records })
 
-        for record in sorted_records:
-            records[record['_id']] = record
+        # for record in recordsinDB:
+        #     records[record['_id']] = record
         print('found ' + str(howmany) + ' Uber!')
 ##################
 # ADMINISTRATION #

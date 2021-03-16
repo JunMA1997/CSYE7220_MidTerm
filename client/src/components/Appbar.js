@@ -34,6 +34,7 @@ import PasswordReset from "../pages/PasswordReset/PasswordReset";
 import PasswordChange from "../pages/PasswordChange/PasswordChange";
 import THome from "../pages/Tweets/Home";
 import Compose from "../pages/Compose/Compose";
+import Booking from "../pages/BookBus/Booking"
 import Buses from "../pages/AllBus/Buses"
 
 const drawerWidth = 240;
@@ -277,7 +278,7 @@ export default function Dashboard() {
           {/* menu paths */}
           <Route exact path="/" component={Home} />
           <Route path="/details" component={Buses} />
-          <Route path="/compose" component={Compose} />
+          <Route path="/compose" component={Booking} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
           <Route path="/password_reset" component={PasswordReset} />

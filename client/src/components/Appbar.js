@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Router, Route, Link } from "react-router-dom";
+import { Router, Route, Link,Switch } from "react-router-dom";
 import { createBrowserHistory } from "history";
 
 import AppBar from '@material-ui/core/AppBar';
@@ -35,7 +35,8 @@ import PasswordChange from "../pages/PasswordChange/PasswordChange";
 import THome from "../pages/Tweets/Home";
 import Compose from "../pages/Compose/Compose";
 import Booking from "../pages/BookBus/Booking"
-import Buses from "../pages/AllBus/Buses"
+import Buses from "../pages/AllBus/Buses";
+import ErrorPage from "../pages/Error";
 
 const drawerWidth = 240;
 const history = createBrowserHistory();
@@ -274,15 +275,18 @@ export default function Dashboard() {
 
         {/* This is your mission control: Matches URLs above to your components */}
         <main className={classes.content}>
-
+            
           {/* menu paths */}
-          <Route exact path="/" component={Home} />
-          <Route path="/details" component={Buses} />
-          <Route path="/booking" component={Booking} />
-          <Route path="/signin" component={SignIn} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/password_reset" component={PasswordReset} />
-          <Route path="/password_change" component={PasswordChange} />
+          <Switch>
+          <Route exact  exact path="/" component={Home} />
+          <Route exact  path="/details" component={Buses} />
+          <Route exact  path="/booking" component={Booking} />
+          <Route exact  path="/signin" component={SignIn} />
+          <Route exact  path="/signup" component={SignUp} />
+          <Route exact  path="/password_reset" component={PasswordReset} />
+          <Route  exact path="/password_change" component={PasswordChange} />
+          <Route component={ErrorPage} />
+          </Switch>
           {/* <Route path="/activity"><ActivityHome /></Route> */}
         </main>
       </Router>

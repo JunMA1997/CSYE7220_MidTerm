@@ -6,7 +6,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Entry from "./Entry"
-
+import pythonip from "../../config"
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -33,7 +33,7 @@ export default function ControlledAccordions() {
 
   const submitValue=(data)=>{
       console.log("data -->",data);
-      fetch("http://"+process.env["pythonip"]+':5000/postData', {
+      fetch("http://"+pythonip+':5000/postData', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'

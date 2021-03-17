@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet, ActivityIndicator } from "react-native";
 import BusList from "./BusList";
 import  datapoints   from "../../dataValues/datapoints";
+import pythonip from "../../config"
 //import axios from 'axios';
 
 const Buses = () => {
@@ -10,7 +11,7 @@ const Buses = () => {
   
   useEffect(() => {
     const fetchData = async () => {
-	  const res = await fetch("http://"+process.env.pythonip+":5000/getData");
+	  const res = await fetch("http://"+pythonip+":5000/getData");
       const results  = await res.json();
       console.log(results);
       setTweets(results);

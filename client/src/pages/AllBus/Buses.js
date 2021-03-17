@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ScrollView, StyleSheet, ActivityIndicator } from "react-native";
 import BusList from "./BusList";
 import  datapoints   from "../../dataValues/datapoints";
-import pythonip from "../../config"
+import pythonip from "../../ipconfig"
 //import axios from 'axios';
 
 const Buses = () => {

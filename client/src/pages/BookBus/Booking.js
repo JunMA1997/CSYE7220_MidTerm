@@ -6,7 +6,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Entry from "./Entry"
-import pythonip from "../../ipconfig"
+import {pythonip} from "../../ipconfig"
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',

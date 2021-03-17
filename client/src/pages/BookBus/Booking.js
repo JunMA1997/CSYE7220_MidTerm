@@ -33,7 +33,7 @@ export default function ControlledAccordions() {
 
   const submitValue=(data)=>{
       console.log("data -->",data);
-      fetch(process.env.pythonip+':5000/postData', {
+      fetch("http://"+process.env["pythonip"]+':5000/postData', {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json'

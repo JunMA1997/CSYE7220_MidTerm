@@ -10,7 +10,7 @@ const Buses = () => {
   
   useEffect(() => {
     const fetchData = async () => {
-	  const res = await fetch(process.env.pythonip+":5000/getData");
+	  const res = await fetch("http://"+process.env.pythonip+":5000/getData");
       const results  = await res.json();
       console.log(results);
       setTweets(results);

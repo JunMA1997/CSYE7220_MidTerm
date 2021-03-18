@@ -5,6 +5,11 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Alert from '@material-ui/lab/Alert';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -43,8 +48,8 @@ const useStyles = makeStyles((theme) => ({
 export default function CenteredGrid({submitValue,route}) {
   const [userName,setUserName]=React.useState('');
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
-  const [startTime, setStartTime] = React.useState('');
-  const [endTime, setEndTime] = React.useState('');
+  const [startTime, setStartTime] = React.useState('Stop 1');
+  const [endTime, setEndTime] = React.useState('Stop 7');
   const [error,seterror]= React.useState(false);
   const [success,SetSuccess]=React.useState(false);
   const handleDateChange = (e) => {
@@ -67,15 +72,16 @@ const clearData=()=>{
   seterror(false);
   setUserName('');
   setSelectedDate(new Date('2014-08-18T21:11:54'));
-  setStartTime('');
-  setEndTime('')
+  setStartTime('Stop 1');
+  setEndTime('Stop 7')
 
 }
 const Validate=()=>{
-  if(userName==''||startTime==''||endTime=='') {return false};
+  if(userName=='') {return false};
   if(selectedDate=='2014-08-18T21:11:54') {return false};;
   const nreg=/^[a-zA-Z ]*$/;
-  if(!userName.match((nreg))||!startTime.match(nreg)||!endTime.match(nreg)) {return false};;
+  if(startTime==endTime) return false;
+  if(!userName.match((nreg))) {return false};;
   return true;
 }
 const submitData=()=>{
@@ -121,40 +127,47 @@ const submitData=()=>{
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-          <TextField
-        id="time"
-        label="source"
-        type="text"
-        className={classes.textFieldClock}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        inputProps={{
-          step: 300, // 5 min
-        }}
+
+        <InputLabel htmlFor="source destination">Source</InputLabel>
+        <NativeSelect
           value={startTime}
           onChange={handleStartTimeChange}
-      />
+          inputProps={{
+            name: 'age',
+            id: 'age-native-helper',
+          }}
+        >
+          <option value={'Stop 1'}>Stop 1</option>
+          <option value={'Stop 2'}>Stop 2</option>
+          <option value={'Stop 3'}>Stop 3</option>
+          <option value={'Stop 4'}>Stop 4</option>
+          <option value={'Stop 5'}>Stop 5</option>
+          <option value={'Stop 6'}>Stop 6</option>
+          <option value={'Stop 7'}>Stop 7</option>
+        </NativeSelect>
 
 
           </Paper>
         </Grid>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
-          <TextField
-        id="time"
-        label="Destination"
-        type="text"
-        className={classes.textFieldClock}
-        InputLabelProps={{
-          shrink: true,
-        }}
-        inputProps={{
-          step: 300, // 5 min
-        }}
+          <InputLabel htmlFor="source destination">Destination</InputLabel>
+        <NativeSelect
           value={endTime}
           onChange={handleEndTimeChange}
-      />
+          inputProps={{
+            name: 'age',
+            id: 'age-native-helper',
+          }}
+        >
+          <option value={'Stop 1'}>Stop 1</option>
+          <option value={'Stop 2'}>Stop 2</option>
+          <option value={'Stop 3'}>Stop 3</option>
+          <option value={'Stop 4'}>Stop 4</option>
+          <option value={'Stop 5'}>Stop 5</option>
+          <option value={'Stop 6'}>Stop 6</option>
+          <option value={'Stop 7'}>Stop 7</option>
+        </NativeSelect>
           
           </Paper>
         </Grid>

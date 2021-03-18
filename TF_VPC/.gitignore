@@ -1,3 +1,4 @@
 terraform*
 .terraform*
 *.local
+aws45.txt

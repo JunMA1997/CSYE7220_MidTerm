@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Alert from '@material-ui/lab/Alert';
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
@@ -42,8 +43,10 @@ const useStyles = makeStyles((theme) => ({
 export default function CenteredGrid({submitValue,route}) {
   const [userName,setUserName]=React.useState('');
   const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
-  const [startTime, setStartTime] = React.useState(new Date('2014-08-18T21:11:54'));
-  const [endTime, setEndTime] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [startTime, setStartTime] = React.useState('');
+  const [endTime, setEndTime] = React.useState('');
+  const [error,seterror]= React.useState(false);
+  const [success,SetSuccess]=React.useState(false);
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
   };
@@ -61,14 +64,23 @@ const handleEndTimeChange = (e) => {
     };
 
 const clearData=()=>{
+  seterror(false);
   setUserName('');
   setSelectedDate(new Date('2014-08-18T21:11:54'));
-  setStartTime(new Date('2014-08-18T21:11:54'));
-  setEndTime(new Date('2014-08-18T21:11:54'))
+  setStartTime('');
+  setEndTime('')
 
 }
+const Validate=()=>{
+  if(userName==''||startTime==''||endTime=='') {return false};
+  if(selectedDate=='2014-08-18T21:11:54') {return false};;
+  const nreg=/^[a-zA-Z ]*$/;
+  if(!userName.match((nreg))||!startTime.match(nreg)||!endTime.match(nreg)) {return false};;
+  return true;
+}
 const submitData=()=>{
-  const data={
+  if(Validate())
+  {const data={
     "route": route,
     "name":userName,
     "date":selectedDate,
@@ -76,11 +88,15 @@ const submitData=()=>{
     "endtime":endTime
   }
   clearData();
-  submitValue(data);
+  submitValue(data);}
+  else{
+    seterror(true);
+  }
   
 }
   return (
     <div className={classes.root}>
+      {error?<Alert severity="error">Values incorrect or empty</Alert>:''}
       <Grid container spacing={2}>
         <Grid item xs={6}>
           <Paper className={classes.paper}>
@@ -107,9 +123,8 @@ const submitData=()=>{
           <Paper className={classes.paper}>
           <TextField
         id="time"
-        label="Alarm clock"
-        type="time"
-        defaultValue="07:30"
+        label="source"
+        type="text"
         className={classes.textFieldClock}
         InputLabelProps={{
           shrink: true,
@@ -128,9 +143,8 @@ const submitData=()=>{
           <Paper className={classes.paper}>
           <TextField
         id="time"
-        label="Alarm clock"
-        type="time"
-        defaultValue="07:30"
+        label="Destination"
+        type="text"
         className={classes.textFieldClock}
         InputLabelProps={{
           shrink: true,

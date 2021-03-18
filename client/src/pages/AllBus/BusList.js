@@ -55,8 +55,8 @@ export default function CustomizedTables({data}) {
           <StyledTableCell >Booked By</StyledTableCell>
             <StyledTableCell align="right">Route No</StyledTableCell>
             <StyledTableCell align="right">Data</StyledTableCell>
-            <StyledTableCell align="right">Start Time</StyledTableCell>
-            <StyledTableCell align="right">End Time</StyledTableCell>
+            <StyledTableCell align="right">Source</StyledTableCell>
+            <StyledTableCell align="right">Destination</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

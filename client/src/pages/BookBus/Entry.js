@@ -47,11 +47,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CenteredGrid({submitValue,route}) {
   const [userName,setUserName]=React.useState('');
-  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [selectedDate, setSelectedDate] = React.useState(new Date().toISOString().slice(0,10));
   const [startTime, setStartTime] = React.useState('Stop 1');
   const [endTime, setEndTime] = React.useState('Stop 7');
   const [error,seterror]= React.useState(false);
   const [success,SetSuccess]=React.useState(false);
+  const [defDate, setDefDate] = React.useState(new Date().toISOString().slice(0,10));
   const handleDateChange = (e) => {
     setSelectedDate(e.target.value);
   };
@@ -71,20 +72,21 @@ const handleEndTimeChange = (e) => {
 const clearData=()=>{
   seterror(false);
   setUserName('');
-  setSelectedDate(new Date('2014-08-18T21:11:54'));
+  setSelectedDate(new Date().toISOString().slice(0,10));
   setStartTime('Stop 1');
   setEndTime('Stop 7')
 
 }
 const Validate=()=>{
   if(userName=='') {return false};
-  if(selectedDate=='2014-08-18T21:11:54') {return false};;
+  if(selectedDate=='') {return false};;
   const nreg=/^[a-zA-Z ]*$/;
   if(startTime==endTime) return false;
   if(!userName.match((nreg))) {return false};;
   return true;
 }
 const submitData=()=>{
+  console.log(selectedDate);
   if(Validate())
   {const data={
     "route": route,
@@ -119,6 +121,7 @@ const submitData=()=>{
                 className={classes.textField}
                 InputLabelProps={{
                   shrink: true,
+                  min:{defDate}
                 }}
                 value={selectedDate}
                 onChange={handleDateChange}

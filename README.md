@@ -9,7 +9,7 @@ server- python app.
 react app -- npm install;
 python app -- pip install requirement.txt
 
-##run
+## run
 react app - npm start
 pyhton app -- py main.py
 
